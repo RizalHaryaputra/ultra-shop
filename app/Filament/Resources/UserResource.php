@@ -9,6 +9,7 @@ use Filament\Actions\ActionGroup;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Pages\Page;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -33,7 +34,7 @@ class UserResource extends Resource
                     ->label('Email Address')
                     ->email()
                     ->maxLength(255)
-                    ->unique(true)
+                    ->unique(ignoreRecord: true)
                     ->required(),
                 Forms\Components\TextInput::make('email_verified_at')
                     ->label('Email Verified At')
@@ -41,7 +42,7 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->dehydrated(fn($state) => filled($state))
-                    ->required(fn($livewire): bool => $livewire instanceof CreateRecord)
+                    ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
             ]);
     }
 
@@ -50,15 +51,15 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                ->searchable(),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('email')
-                ->searchable(),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('email_verified_at')
-                ->sortable()
-                ->dateTime(),
+                    ->sortable()
+                    ->dateTime(),
                 Tables\Columns\TextColumn::make('created_at')
-                ->sortable()
-                ->dateTime(),
+                    ->sortable()
+                    ->dateTime(),
 
             ])
             ->filters([
