@@ -39,8 +39,10 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('email_verified_at')
                     ->label('Email Verified At')
                     ->default(now()),
+
                 Forms\Components\TextInput::make('password')
                     ->password()
+                    ->disabled()
                     ->dehydrated(fn($state) => filled($state))
                     ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
             ]);
