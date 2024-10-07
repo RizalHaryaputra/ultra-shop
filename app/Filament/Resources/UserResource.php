@@ -37,7 +37,7 @@ class UserResource extends Resource
                     ->maxLength(255)
                     ->unique(ignoreRecord: true)
                     ->required(),
-                
+
                 DateTimePicker::make('email_verified_at')
                     ->label('Email Verified At')
                     ->displayFormat('d-M-Y H:i')
@@ -46,7 +46,6 @@ class UserResource extends Resource
 
                 Forms\Components\TextInput::make('password')
                     ->password()
-                    ->disabled()
                     ->dehydrated(fn($state) => filled($state))
                     ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
             ]);
