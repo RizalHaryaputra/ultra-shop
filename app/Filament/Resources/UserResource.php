@@ -7,6 +7,7 @@ use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Actions\ActionGroup;
 use Filament\Forms;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
@@ -36,13 +37,15 @@ class UserResource extends Resource
                     ->maxLength(255)
                     ->unique(ignoreRecord: true)
                     ->required(),
-                Forms\Components\TextInput::make('email_verified_at')
+
+                DateTimePicker::make('email_verified_at')
                     ->label('Email Verified At')
-                    ->default(now()),
+                    ->displayFormat('d-M-Y H:i')
+                    ->timezone('Asia/Jakarta')
+                    ->required(),
 
                 Forms\Components\TextInput::make('password')
                     ->password()
-                    ->disabled()
                     ->dehydrated(fn($state) => filled($state))
                     ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
             ]);
