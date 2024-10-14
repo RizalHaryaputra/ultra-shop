@@ -43,7 +43,7 @@ class ProductResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255)
-                            ->live(True)
+                            ->live(true)
                             ->afterStateUpdated(function (string $operation, $state, Set $set) {
                                 if ($operation !== 'create') {
                                     return;
@@ -69,7 +69,7 @@ class ProductResource extends Resource
                             ->directory('products')
                             ->maxFiles(5)
                             ->reorderable(),
-                    ])  
+                    ])
                 ])->columnSpan(2),
 
                 Group::make()->schema([
