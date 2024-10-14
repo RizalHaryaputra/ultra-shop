@@ -64,12 +64,12 @@ class ProductResource extends Resource
                     ])->columns(2),
 
                     Section::make('Images')->schema([
-                        Forms\Components\FileUpload::make('image')
+                        Forms\Components\FileUpload::make('images')
                             ->multiple()
                             ->directory('products')
                             ->maxFiles(5)
                             ->reorderable(),
-                    ])
+                    ])  
                 ])->columnSpan(2),
 
                 Group::make()->schema([
@@ -97,11 +97,11 @@ class ProductResource extends Resource
                     Section::make('Status')->schema([
                         Toggle::make('in_stock')
                             ->required()
-                            ->default(True),
+                            ->default(true),
 
-                        Toggle::make('in_active')
+                        Toggle::make('is_active')
                             ->required()
-                            ->default(True),
+                            ->default(true),
 
                         Toggle::make('in_featured')
                             ->required(),
