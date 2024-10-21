@@ -89,7 +89,7 @@ class OrderResource extends Resource
                             ->required(),
 
                         Select::make('shipping_method')
-                            ->options(['fedex' => 'FedEx', 'ups' => 'UPS', 'dhl' => 'DHL', 'usps' => 'USPS']),
+                            ->options(['jne' => 'JNE', 'j&t express' => 'J&T Express', 'si cepat' => 'Si Cepat', 'tiki' => 'TIKI']),
 
                         Textarea::make('notes')
                             ->columnSpanFull()
@@ -100,7 +100,9 @@ class OrderResource extends Resource
                             ->relationship()
                             ->schema([
                                 Select::make('product_id')
-                                    ->relationship('product', 'name')
+                                    ->relationship('product', 'name', function (Builder $query) {
+                                        $query->where('in_stock', true);
+                                    })
                                     ->searchable()
                                     ->preload()
                                     ->distinct()
@@ -110,6 +112,7 @@ class OrderResource extends Resource
                                     ->afterStateUpdated(fn($state, Set $set) => $set('unit_amount', Product::find($state)?->price ?? 0))
                                     ->afterStateUpdated(fn($state, Set $set) => $set('total_amount', Product::find($state)?->price ?? 0))
                                     ->columnSpan(4),
+
 
                                 TextInput::make('quantity')
                                     ->numeric()
