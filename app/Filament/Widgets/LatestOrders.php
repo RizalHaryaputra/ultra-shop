@@ -53,11 +53,17 @@ class LatestOrders extends BaseWidget
 
                 TextColumn::make('payment_method')
                     ->sortable()
+                    ->badge()
                     ->searchable(),
 
                 TextColumn::make('payment_status')
                     ->sortable()
                     ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'pending' => 'warning',
+                        'paid' => 'success',
+                        'failed' => 'danger',
+                    })
                     ->searchable(),
 
                 TextColumn::make('created_at')
