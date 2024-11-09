@@ -25,6 +25,7 @@ class ResetPasswordPage extends Component
     }
 
     public function save() {
+        // dd($this->password, $this->password_confirmation);
         $this->validate([
             'token' => 'required',
             'email' => 'required|email',
