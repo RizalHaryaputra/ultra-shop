@@ -45,7 +45,6 @@ class CartManagement
     }
 
     // add item to card with quantity
-    // add item to cart
     static public function addItemToCartWithQty($product_id, $qty = 1)
     {
         $cart_items = self::getCartItemsFromCookie();
