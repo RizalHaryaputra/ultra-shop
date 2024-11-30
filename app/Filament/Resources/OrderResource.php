@@ -141,13 +141,6 @@ class OrderResource extends Resource
 
                             ])->columns(12),
 
-
-                        TextInput::make('shipping_cost')
-                            ->numeric()
-                            ->default(0)
-                            ->minValue(0)
-                            ->required(),
-
                         Placeholder::make('grand_total_placeholder')
                             ->label('Grand Total')
                             ->content(function (Get $get, Set $set) {
@@ -159,10 +152,6 @@ class OrderResource extends Resource
                                 foreach ($repeaters as $key => $repeater) {
                                     $total += $get("items.{$key}.total_amount");
                                 }
-
-                                $shippingCost = $get('shipping_cost') ?? 0;
-
-                                $total += $shippingCost;
 
                                 $set('grand_total', $total);
                                 return Number::currency($total, 'IDR');
@@ -251,17 +240,6 @@ class OrderResource extends Resource
             AddressRelationManager::class
         ];
     }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::saving(function ($order) {
-            $total = $order->items->sum(fn($item) => $item->quantity * $item->unit_amount);
-            $order->grand_total = $total + ($order->shipping_cost ?? 0);
-        });
-    }
-
 
     public static function getNavigationBadge(): ?string
     {
