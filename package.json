@@ -1,18 +1,29 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "autoprefixer": "^10.4.20",
-        "axios": "^1.1.2",
-        "laravel-vite-plugin": "^0.7.2",
-        "postcss": "^8.4.47",
-        "tailwindcss": "^3.4.14",
-        "vite": "^4.0.0"
-    },
-    "dependencies": {
-        "preline": "^2.5.1"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.1.2",
+    "laravel-vite-plugin": "^0.7.2",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "vite": "^4.0.0"
+  },
+  "dependencies": {
+    "groq-sdk": "^0.8.0",
+    "preline": "^2.5.1"
+  },
+  "name": "ultra-shop",
+  "description": "ULTRA - SHOP merupakan suatu aplikasi yang di buat untuk mempermudah konsumen dalam membeli pakaian secara online. ULTRA - SHOP hadir untuk meningkatkan efisiensi konsumen dalam membeli barang yang dapat dilakukan kapanpun dan dimanapun. Dengan menggunakan aplikasi berbasis web ULTRA - SHOP memiliki berbagai pilihan pakaian yang lengkap untuk melengkapi outfit anda mulai dari ujung rambut hingga ujung kaki semua ada di ULTRA - SHOP e commerce No.1 belanja pakaian semua merk semua ukuran semua yang anda inginkan ada di ULTRA - SHOP. ULTRA - SHOP memiliki fitur  yang dapat membantu konsumen dalam mempermudah pencarian barang seperti bantuan filter dari merk, model, hingga range harga. Selain itu ULTRA - SHOP juga memiliki customer service yang hadir 24 jam untuk menemani konsumen yang memiliki masalah di ULTRA - SHOP.",
+  "version": "1.0.0",
+  "main": "postcss.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

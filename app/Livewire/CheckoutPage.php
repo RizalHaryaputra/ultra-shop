@@ -23,11 +23,13 @@ class CheckoutPage extends Component
     public $state;
     public $zip_code;
     public $payment_method;
+    public $shipping_method;
 
 
-    public function mount() {
+    public function mount()
+    {
         $cart_items = CartManagement::getCartItemsFromCookie();
-        if(count($cart_items) == 0) {
+        if (count($cart_items) == 0) {
             return redirect('/products');
         }
     }
@@ -68,11 +70,15 @@ class CheckoutPage extends Component
         $order->user_id = auth()->user()->id;
         $order->grand_total = CartManagement::calculateGrandTotal($cart_items);
         $order->payment_method = $this->payment_method;
-        $order->payment_status = 'paid';
+        if ($this->payment_method == 'stripe') {
+            $order->payment_status = 'paid';
+        } else {
+            $order->payment_status = 'pending';
+        }
         $order->status = 'new';
         $order->currency = 'IDR';
         $order->shipping_amount = 0;
-        $order->shipping_method = 'none';
+        $order->shipping_method = $this->shipping_method;
         $order->notes = 'Order palced by ' . auth()->user()->name;
 
         $address = new Address();

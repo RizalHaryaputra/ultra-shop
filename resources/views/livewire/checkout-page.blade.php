@@ -99,6 +99,25 @@
 									<div class="text-red-500 text-sm">{{$message}}</div>
 								@enderror
 							</div>
+							<div class="mt-4">
+								<label class="block text-gray-700 dark:text-white mb-1" for="shipping_method">
+									Shipping Method
+								</label>
+								<select 
+									wire:model='shipping_method'
+									class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none"
+									id="shipping_method">
+									<option value="">Select a shipping method</option>
+									<option value="jne">JNE</option>
+									<option value="tiki">TIKI</option>
+									<option value="pos">POS Indonesia</option>
+									<option value="sicepat">SiCepat</option>
+									<option value="j&t">J&T Express</option>
+								</select>
+								@error('shipping_method')
+									<div class="text-red-500 text-sm">{{$message}}</div>
+								@enderror
+							</div>
 						</div>
 					</div>
 					<div class="text-lg font-semibold mb-4">

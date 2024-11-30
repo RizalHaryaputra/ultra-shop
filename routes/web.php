@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ChatBotController;
+use App\Livewire\ChatBot;
 use App\Livewire\Auth\ForgotPasswordPage;
 use App\Livewire\Auth\LoginPage;
 use App\Livewire\Auth\RegisterPage;
@@ -33,6 +35,8 @@ Route::get('/products', ProductsPage::class);
 Route::get('/products/{slug}', ProductDetailPage::class);
 Route::get('/cart', CartPage::class);
 
+
+
 Route::middleware('guest')->group(function () {
   Route::get('/login', LoginPage::class)->name('login');
   Route::get('/register', RegisterPage::class);
@@ -51,3 +55,9 @@ Route::middleware('auth')->group(function () {
   Route::get('/success', SuccessPage::class)->name('success');
   Route::get('/cancel', CancelPage::class)->name('cancel');
 });
+
+
+// Jika ingin menampilkan halaman
+Route::get('/chatbot', ChatBot::class)->name('chatbot.show');
+// Jika untuk menangani request POST
+Route::post('/chatbot', [ChatBotController::class, 'generateResponse'])->name('chatbot.generateResponse'); 

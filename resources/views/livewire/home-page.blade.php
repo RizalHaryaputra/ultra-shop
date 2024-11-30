@@ -23,7 +23,7 @@
                             </svg>
                         </a>
                         <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            href="https://wa.me/6287855038324">
+                            href="http://127.0.0.1:5501/index.html">
                             Contact sales team
                         </a>
                     </div>
@@ -320,9 +320,9 @@
             </div>
             <div class="bg-white shadow-lg rounded-lg p-8 md:p-12">
                 <form action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="17796a89-0018-46b2-b238-8384fe6bfe6e">
+                    <input type="hidden" name="access_key" value="df8a6ddb-821d-4701-8a6a-fc9be09b2fcf">
                     <input type="hidden" name="redirect" value="https://web3forms.com/success">
-
+                    
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                         <div>
                             <label class="block text-gray-700 mb-2" for="name">Name</label>
